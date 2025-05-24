@@ -273,11 +273,18 @@ nav ul li a.destaque {
 
 @media (max-width: 768px) {
   .valores-list {
-    padding: 25px;
+    padding: 20px;
   }
 
   .valores-list li {
     font-size: 1rem;
+     flex-direction: column;
+  }
+
+  .portfolio-item{
+    line-height: 1rem;
+    margin-top: 20px;
+    font-size: 0.8rem;
   }
 }
 
@@ -433,8 +440,8 @@ nav ul li a.destaque {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     background: linear-gradient(to right, #112E76, #20cfc6);
     color: white;
     border-radius: 50%;
@@ -521,6 +528,14 @@ footer {
     .hero-content h1 {
         font-size: 2.5rem;
     }
+
+    .social-media a{
+        height: 40px;
+        width: 80px;
+    }
+    .social-media h4{
+        line-height: 1rem;
+    }
 }
 
 @media (max-width: 576px) {
@@ -544,4 +559,3 @@ footer {
 .valor{
     color: rgba(206, 35, 35, 0.966);
 }
-/* Serviços Section */
