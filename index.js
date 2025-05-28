@@ -1,13 +1,38 @@
- // Menu Toggle para dispositivos móveis
-document.querySelector('.menu-toggle').  addEventListener('click', function() {
-document.querySelector('nav ul').classList.toggle('active');
+// Menu Toggle para dispositivos móveis e ícone X
+const menuToggle = document.querySelector('.menu-toggle');
+const navUl = document.querySelector('nav ul');
+const menuIcon = menuToggle.querySelector('i');
+
+menuToggle.addEventListener('click', function() {
+    navUl.classList.toggle('active');
+    // Troca icon de hamburguer para X e vice-versa
+    if(navUl.classList.contains('active')) {
+        menuIcon.classList.remove('fa-bars');
+        menuIcon.classList.add('fa-xmark');
+        menuToggle.setAttribute('aria-expanded', 'true');
+    } else {
+        menuIcon.classList.remove('fa-xmark');
+        menuIcon.classList.add('fa-bars');
+        menuToggle.setAttribute('aria-expanded', 'false');
+    }
 });
 
-        // Filtro de portfólio
+// Fecha menu ao clicar em um item no mobile
+navUl.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', function() {
+        if(window.innerWidth <= 768 && navUl.classList.contains('active')) {
+            navUl.classList.remove('active');
+            menuIcon.classList.remove('fa-xmark');
+            menuIcon.classList.add('fa-bars');
+            menuToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+});
+
+// Filtro de portfólio
 const filterBtns = document.querySelectorAll('.filter-btn');
 const portfolioItems = document.querySelectorAll('.portfolio-item');
 
-        // Função para aplicar filtro
 function aplicarFiltro(filtro) {
     portfolioItems.forEach(item => {
         if (filtro === 'todos') {
@@ -42,12 +67,15 @@ filterBtns.forEach(btn => {
     });
 });
 
-        // Smooth scroll para links de navegação
+// Smooth scroll para links de navegação
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+        // Só previne se for âncora interna
+        if(document.querySelector(this.getAttribute('href'))) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
             });
+        }
     });
 });

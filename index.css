@@ -1,10 +1,8 @@
-/* Reset e Estilos Gerais */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -99,6 +97,10 @@ header .container {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    transition: font-size 0.3s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 nav ul {
@@ -108,6 +110,9 @@ nav ul {
 
 nav ul li {
     margin-left: 30px;
+    border-radius: 10px;
+    /* Para o hover customizado */
+    transition: background 0.2s;
 }
 
 nav ul li a {
@@ -115,25 +120,79 @@ nav ul li a {
     color: #333;
     font-weight: 600;
     transition: color 0.3s ease;
+    display: block;
+    padding: 8px 18px;
+    border-radius: 10px;
 }
 
-nav ul li a:hover {
+nav ul li a:hover,
+nav ul li.active a {
     color: #112E76;
+    background: linear-gradient(90deg, #e5eefd 60%, #e4f8f6 100%);
 }
 
 nav ul li a.destaque {
-  text-align: center;
-  border-radius: 12px;
-  background: linear-gradient(to right, #112E76, #185F9A, #01349F);
-  color: white !important;
-  padding: 10px 20px;
-  transition: all 0.3s ease;
+    text-align: center;
+    border-radius: 12px;
+    background: linear-gradient(to right, #112E76, #185F9A, #01349F);
+    color: white !important;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
 }
 
 .menu-toggle {
     display: none;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     cursor: pointer;
+    z-index: 2000;
+}
+
+.menu-toggle .fa-xmark {
+    color: #185F9A;
+}
+
+@media (max-width: 768px) {
+    .logo h1 {
+        font-size: 1.2rem;
+        max-width: 160px;
+    }
+    nav ul {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100vw;
+        background: linear-gradient(110deg, #f5faff 85%, #e1f7f6 100%);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.07);
+        transform: translateY(-150%);
+        transition: transform 0.3s ease;
+    }
+    nav ul.active {
+        transform: translateY(0);
+    }
+    nav ul li {
+        margin: 10px 0;
+        width: 90vw;
+        text-align: center;
+        background: linear-gradient(90deg,#e5eefd 60%, #e4f8f6 100%);
+    }
+    nav ul li a {
+        padding: 18px 0;
+        font-size: 1.1rem;
+        background: none !important;
+        color: #112E76;
+    }
+    nav ul li a.destaque {
+        background: linear-gradient(to right, #112E76, #185F9A, #01349F) !important;
+        color: #fff !important;
+        margin: 0 auto;
+        width: 90vw;
+    }
+    .menu-toggle {
+        display: block;
+    }
 }
 
 /* Hero Section */
@@ -161,6 +220,16 @@ nav ul li a.destaque {
     font-size: 1.2rem;
     margin-bottom: 30px;
     animation: fadeInUp 1s ease;
+}
+
+@media (max-width: 576px) {
+    .hero-content h1 {
+        font-size: 1.1rem;
+        line-height: 1.2;
+        max-width: 90vw;
+        min-width: 0;
+        white-space: normal;
+    }
 }
 
 /* Sobre Section */
@@ -225,67 +294,65 @@ nav ul li a.destaque {
 
 /* Ética do Amor Section */
 .etica-do-amor {
-  background: linear-gradient(to right, #011c570e, #01339f18);
+    background: linear-gradient(to right, #011c570e, #01339f18);
 }
 
 .etica-content {
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .etica-intro {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
 }
 
 .valores-list {
-  list-style: none;
-  text-align: left;
-  background-color: white;
-  padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  margin-bottom: 30px;
+    list-style: none;
+    text-align: left;
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
 }
 
 .valores-list li {
-  margin-bottom: 20px;
-  padding-left: 10px;
-  font-size: 1.1rem;
-  display: flex;
-  align-items: flex-start;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: flex-start;
 }
 
 .valores-list li:last-child {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .valores-list li strong {
-  color: #185F9A;
-  margin-right: 5px;
+    color: #185F9A;
+    margin-right: 5px;
 }
 
 .etica-outro {
-  font-size: 1.2rem;
-  font-weight: 500;
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
 @media (max-width: 768px) {
-  .valores-list {
-    padding: 20px;
-  }
-
-  .valores-list li {
-    font-size: 1rem;
-     flex-direction: column;
-  }
-
-  .portfolio-item{
-    line-height: 1rem;
-    margin-top: 20px;
-    font-size: 0.8rem;
-  }
+    .valores-list {
+        padding: 20px;
+    }
+    .valores-list li {
+        font-size: 1rem;
+        flex-direction: column;
+    }
+    .portfolio-item{
+        line-height: 1rem;
+        margin-top: 20px;
+        font-size: 0.8rem;
+    }
 }
 
 /* Serviços Section */
@@ -405,11 +472,107 @@ nav ul li a.destaque {
 .btn-small{
     color: #f1f1f1;
 }
+
+/* Passo a Passo Section */
+.passo-a-passo {
+    background: linear-gradient(120deg, #f5faff 80%, #20cfc630 100%);
+}
+
+.passo-a-passo h2 {
+    margin-bottom: 40px;
+}
+
+.steps-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.step-card {
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.07);
+    padding: 35px 30px 25px 30px;
+    flex: 1 1 240px;
+    max-width: 260px;
+    min-width: 220px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-bottom: 10px;
+}
+
+.step-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 28px rgba(32, 207, 198, 0.10);
+}
+
+.step-number {
+    background: linear-gradient(120deg, #112E76 60%, #20cfc6 100%);
+    color: #fff;
+    font-size: 2rem;
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    border-radius: 50%;
+    margin: 0 auto 18px auto;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 14px rgba(32, 207, 198, 0.11);
+}
+
+.step-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 10px;
+    color: #112E76;
+}
+
+.step-card p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+/* Link colorido do passo dois */
+.link-formulario {
+    color: #009ea1;
+    font-weight: 700;
+    text-decoration: underline;
+    transition: color 0.2s;
+    margin-top: 10px;
+    display: inline-block;
+}
+.link-formulario:hover {
+    color: #112E76;
+}
+
+/* Botão centralizado fora dos cards */
+.passo-a-passo .contato-item {
+    margin-top: 40px;
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .steps-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .step-card {
+        max-width: 340px;
+        min-width: 0;
+    }
+}
+
 /* Contato Section */
 .contato-content {
     display: flex;
     flex-direction: column;
     gap: 50px;
+    margin: 0;
+    padding: 0;
 }
 
 .contato-info {
@@ -427,13 +590,10 @@ nav ul li a.destaque {
 
 .social-media {
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 15px;
     margin-top: 30px;
-}
-
-.social-media h4{
-    margin-top: 10px;
 }
 
 .social-media a {
@@ -452,9 +612,6 @@ nav ul li a.destaque {
 .social-media a:hover {
     transform: translateY(-5px);
 }
-
-
-
 
 /* Footer */
 footer {
@@ -492,49 +649,18 @@ footer {
     .sobre-content {
         flex-direction: column;
     }
-    
     .contato-content {
         flex-direction: column;
     }
 }
 
 @media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-    
-    nav ul {
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background-color: white;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px 0;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        transform: translateY(-150%);
-        transition: transform 0.3s ease;
-    }
-    
-    nav ul.active {
-        transform: translateY(0);
-    }
-    
-    nav ul li {
-        margin: 10px 0;
-    }
-    
     .hero-content h1 {
-        font-size: 2.5rem;
-    }
-
-    .social-media a{
-        height: 40px;
-        width: 80px;
-    }
-    .social-media h4{
-        line-height: 1rem;
+        font-size: 1.6rem;
+        white-space: normal;
+        max-width: 90vw;
+        min-width: 0;
+        line-height: 1.2;
     }
 }
 
@@ -542,15 +668,9 @@ footer {
     section {
         padding: 70px 0;
     }
-    
     h2 {
         font-size: 2rem;
     }
-    
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-    
     .portfolio-grid {
         grid-template-columns: 1fr;
     }
